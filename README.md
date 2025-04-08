@@ -19,7 +19,7 @@ Cieľom zadania je vytvoriť jednoduchú aplikáciu v Next.js, ktorá slúži ak
 
 Pre účely zadania sme vytvorili 3 jednoduché API endpointy - GET zoznamu útulkov zapojených do projektu, GET pre hodnotu vyzbieranej sumy a počet darcov a POST na odoslanie obsahu formuláru. Dokumentáciu k nim nájdete na nasledovnom odkaze: https://frontend-assignment-api.goodrequest.dev/apidoc/
 
-Grafické podklady pre zadanie nájdete na nasledovnom odkaze (registrácia do toolu Figma je zdarma): https://www.figma.com/file/FyxU4Zzp54tOrmQBNTly7G/GoodRequest-Frontend-Assignment
+Grafické podklady pre zadanie nájdete na nasledovnom odkaze (registrácia do toolu Figma je zdarma): https://www.figma.com/design/fOYdJW8UqfZjT8o2WYigty/Frontend-Assignment-2.0
 
 Vizuálna kvalita spracovania aplikácie a štýlovanie je tiež predmetom hodnotenia. Plynulé a user friendly UI s peknými prechodmi a animáciami sú plusový bod. Môžete použiť Mantine, Antd alebo akúkoľvek inú UI knižnicu- výber nechávame na vás.
 
@@ -79,7 +79,7 @@ The goal of the task is to create a simple application in Next.js that serves as
 
 For the purpose of this assignment, we have created 3 simple API endpoints: a GET for the list of shelters participating in the project, a GET for the total amount raised and the number of donors, and a POST for submitting the form content. You can find the documentation for these endpoints at the following link: https://frontend-assignment-api.goodrequest.dev/apidoc/
 
-Design assets for the assignment can be found at the following link (registration to Figma tool is free): https://www.figma.com/file/FyxU4Zzp54tOrmQBNTly7G/GoodRequest-Frontend-Assignment
+Design assets for the assignment can be found at the following link (registration to Figma tool is free): https://www.figma.com/design/fOYdJW8UqfZjT8o2WYigty/Frontend-Assignment-2.0
 
 The visual quality of the application and styling is also part of the evaluation. A smooth and user-friendly UI with nice transitions and animations will earn extra points. You may use Mantine, Antd, or any other UI library – the choice is up to you.
 
