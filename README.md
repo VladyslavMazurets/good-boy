@@ -8,12 +8,12 @@ Cieľom zadania je vytvoriť jednoduchú aplikáciu v Next.js, ktorá slúži ak
 - vybrať si konkrétny útulok zo zoznamu zapojených útulkov (nepovinné pole v prípade všeobecného príspevku, v opačnom prípade povinné pole)
 - zvoliť si výšku príspevku, pričom je možné nastaviť aj vlastnú hodnotu (povinné pole)
 - vyplniť svoje osobné údaje:
-    - meno- nepovinné pole (2-20 znakov)
-    - priezvisko- povinné pole (2-30 znakov)
-    - e-mail - validný formát e-mailovej adresy
-    - telefón - slovenské alebo české číslo s predvoľbou +420 / +421 so zobrazením zvolenej krajiny vo forme vlajky štátu
-    - potvrdiť súhlas so spracovaním osobných údajov (povinné pole)
-    - odoslať zvalidovaný formulár, prípadne zrozumiteľne oznámiť používateľovi chybový stav
+  - meno- nepovinné pole (2-20 znakov)
+  - priezvisko- povinné pole (2-30 znakov)
+  - e-mail - validný formát e-mailovej adresy
+  - telefón - slovenské alebo české číslo s predvoľbou +420 / +421 so zobrazením zvolenej krajiny vo forme vlajky štátu
+  - potvrdiť súhlas so spracovaním osobných údajov (povinné pole)
+  - odoslať zvalidovaný formulár, prípadne zrozumiteľne oznámiť používateľovi chybový stav
 - pozrieť si kontaktné údaje organizácie v rámci stránky Kontakt
 - zistiť celkovú vyzbieranú sumu a počet/zoznam darcov (tieto údaje sa pravidelne aktualizujú a sú dostupné cez endpoint opísaný nižšie)
 
@@ -28,23 +28,23 @@ Vizuálna kvalita spracovania aplikácie a štýlovanie je tiež predmetom hodno
 - Použiť Next.js
 - Použiť TypeScript
 - Na server state management použiť [TanStack Query](https://tanstack.com/query/latest)
-- Na client state management  (výber je na vás. Odporúčame context+reducer, zustand alebo iný)
+- Na client state management (výber je na vás. Odporúčame context+reducer, zustand alebo iný)
 - Knižnica pre správu formuláru (Odporúčame [react-hook-form](https://www.react-hook-form.com/), formik)
 - Štruktúru projektu nechávame kompletne na vás, ale budeme ju hodnotiť. :)
 
-*  Nice to have (nepovinné kritériá):
-    - Použiť lokalizačnú knižnicu na stringy (napr. i18next)
-    - Použiť styled-components
-    - Validácia formuláru pomocou [Zod](https://zod.dev/) schémy
-    - Myslieť na accessibility (https://www.goodrequest.com/sk/blog/pristupnost-webu-pre-vyvojarov)
-    
+* Nice to have (nepovinné kritériá):
 
-*  Ak vám ostane čas alebo chuť :):
+  - Použiť lokalizačnú knižnicu na stringy (napr. i18next)
+  - Použiť styled-components
+  - Validácia formuláru pomocou [Zod](https://zod.dev/) schémy
+  - Myslieť na accessibility (https://www.goodrequest.com/sk/blog/pristupnost-webu-pre-vyvojarov)
 
-      - Responzívne zobrazenie
-      - SEO (implementovať og:image a rôzne titles a descriptions na jednotlivých stepoch formuláru)
-      - umožniť pridať viacerých darcov- je na vás ako to bude vyzerať
-    
+* Ak vám ostane čas alebo chuť :):
+
+  - Responzívne zobrazenie
+  - SEO (implementovať og:image a rôzne titles a descriptions na jednotlivých stepoch formuláru)
+  - umožniť pridať viacerých darcov- je na vás ako to bude vyzerať
+
 **Postup odovzdania zadania:**
 
 - Naklonujte si tento repozitár k sebe
@@ -56,7 +56,7 @@ Commit messages a spôsob commitovania budú tiež predmetom hodnotenia
 
 **Ak by ste mali hocijaké otázky alebo ste sa niekde zasekli:**
 
-* Kedykoľvek napíšte otázky alebo nás požiadajte o pomoc na [roman.haluska@goodrequest.com](mailto:roman.haluska@goodrequest.com) - radi vám poradíme ;)
+- Kedykoľvek napíšte otázky alebo nás požiadajte o pomoc na [roman.haluska@goodrequest.com](mailto:roman.haluska@goodrequest.com) - radi vám poradíme ;)
 
 # Assignement for Frontend developer - GoodRequest
 
@@ -68,12 +68,12 @@ The goal of the task is to create a simple application in Next.js that serves as
 - select a specific shelter from a list of participating shelters (optional field for a general donation, mandatory field if donating to a specific shelter)
 - choose the amount of the donation, with the possibility to set a custom value (mandatory field)
 - fill in their personal details:
-    - name – optional field (2-20 characters)
-    - surname – mandatory field (2-30 characters)
-    - e-mail – valid format of the e-mail address
-    - phone – Slovak or Czech number with the country code +420 / +421, showing the selected country flag
-    - confirm consent for personal data processing (mandatory field)
-    - submit the validated form, or clearly notify the user of any errors
+  - name – optional field (2-20 characters)
+  - surname – mandatory field (2-30 characters)
+  - e-mail – valid format of the e-mail address
+  - phone – Slovak or Czech number with the country code +420 / +421, showing the selected country flag
+  - confirm consent for personal data processing (mandatory field)
+  - submit the validated form, or clearly notify the user of any errors
 - view the contact details of the organization on the Contact page
 - see the total amount raised and the number/list of donors (these data are regularly updated and accessible through the API endpoint described below)
 
@@ -98,13 +98,12 @@ The visual quality of the application and styling is also part of the evaluation
   - Use styled-components
   - Form validation using a [Zod](https://zod.dev/) schema
   - Consider accessibility (https://www.goodrequest.com/en/blog/web-accessibility-for-developers)
-    
 
 * If you have some spare time :):
   - Responsive design
   - SEO (implement og:image and various titles and descriptions on different form steps)
   - Allow adding multiple donors – it's up to you how this will look
-    
+
 **To submit an assignment:**
 
 - Clone this repository to you
@@ -116,4 +115,4 @@ Commit messages and the way of commmiting will also be evaluated.
 
 **If you have any questions or get stuck:**
 
-* Feel free to ask questions or request help at [roman.haluska@goodrequest.com](mailto:roman.haluska@goodrequest.com) – we’ll be happy to help you. ;)
+- Feel free to ask questions or request help at [roman.haluska@goodrequest.com](mailto:roman.haluska@goodrequest.com) – we’ll be happy to help you. ;)
