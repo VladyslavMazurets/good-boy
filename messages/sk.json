@@ -3,5 +3,9 @@
     "step1": "Výber útulku",
     "step2": "Osobné údaje",
     "step3": "Potvrdenie"
+  },
+
+  "FirstForm": {
+    "title": "Vyberte si možnosť, ako chcete pomôcť "
   }
 }

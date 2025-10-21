@@ -32,7 +32,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <html lang={locale}>
         <body className={inter.className}>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <div className="flex h-full w-full items-center justify-center gap-20 py-5 pr-5 pl-20">
+            <div className="flex h-full w-full items-start justify-center gap-20 py-5 pr-5 pl-20">
               <div className="w-[49.11%]">{children}</div>
 
               <div>
