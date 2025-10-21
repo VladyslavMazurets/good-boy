@@ -1,3 +1,7 @@
 {
-  "hello": "Hello"
+  "FormSteps": {
+    "step1": "Select Shelter",
+    "step2": "Personal Information",
+    "step3": "Confirmation"
+  }
 }

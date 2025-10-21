@@ -1,3 +1,7 @@
 {
-  "hello": "Ahoj"
+  "FormSteps": {
+    "step1": "Výber útulku",
+    "step2": "Osobné údaje",
+    "step3": "Potvrdenie"
+  }
 }
