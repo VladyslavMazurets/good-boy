@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 
 import "../globals.css";
 import { getMessages } from "next-intl/server";
+import Footer from "@/components/Footer";
 
 type Props = {
   children: React.ReactNode;
@@ -33,7 +34,10 @@ export default async function LocaleLayout({ children, params }: Props) {
         <body className={inter.className}>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <div className="flex h-full w-full items-start justify-center gap-20 py-5 pr-5 pl-20">
-              <div className="w-[49.11%]">{children}</div>
+              <div className="w-[49.11%]">
+                {children}
+                <Footer />
+              </div>
 
               <div>
                 <Image

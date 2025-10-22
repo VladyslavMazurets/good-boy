@@ -14,5 +14,16 @@
     "selectLabelPlaceholder": "(Nepovinné)",
     "selectPlaceholder": "Vyberte útulok zo zoznamu",
     "sumLabel": " Suma, ktorou chcem prispieť"
+  },
+
+  "NavigationButtons": {
+    "next": "Pokračovať",
+    "back": "Späť",
+    "submit": "Odoslať formulár "
+  },
+
+  "Footer": {
+    "contacts": "Kontakty",
+    "about": "O projekte"
   }
 }

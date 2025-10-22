@@ -7,6 +7,7 @@ import ContributionTypeSelector from "@/components/ContributionTypeSelector";
 import FormSteps from "@/components/FormSteps";
 import Title from "@/components/Title";
 import FirstStepForm from "@/components/FirstStepForm";
+import StepNavigation from "@/components/StepNavigation";
 
 export default function Home() {
   const t = useTranslations();
@@ -17,6 +18,7 @@ export default function Home() {
       <Title title={t("FirstForm.title")} />
       <ContributionTypeSelector />
       <FirstStepForm />
+      <StepNavigation />
     </div>
   );
 }

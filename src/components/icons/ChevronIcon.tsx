@@ -11,9 +11,9 @@ export default function ChevronIcon({ className }: { className?: string }) {
       <path
         d="m1 1 5 5 5-5"
         stroke="#4B5563"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

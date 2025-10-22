@@ -14,5 +14,16 @@
     "selectLabelPlaceholder": "(Optional)",
     "selectPlaceholder": "Select a shelter from the list",
     "sumLabel": " Amount I want to contribute"
+  },
+
+  "NavigationButtons": {
+    "next": "Continue",
+    "back": "Back",
+    "submit": "Submit Form"
+  },
+
+  "Footer": {
+    "contacts": "Contacts",
+    "about": "About the project"
   }
 }
