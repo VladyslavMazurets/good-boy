@@ -17,9 +17,19 @@ export default function LanguageSwitcher() {
   return (
     <div>
       {locale === "sk" ? (
-        <button onClick={() => switchLocale("en")}>EN</button>
+        <button
+          onClick={() => switchLocale("en")}
+          className="hover:cursor-pointer"
+        >
+          EN
+        </button>
       ) : (
-        <button onClick={() => switchLocale("sk")}>SK</button>
+        <button
+          onClick={() => switchLocale("sk")}
+          className="hover:cursor-pointer"
+        >
+          SK
+        </button>
       )}
     </div>
   );

@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChevronIcon from "./icons/ChevronIcon";
+import { useQuery } from "@tanstack/react-query";
+import apiFetch from "@/lib/api";
 
 type Shelter = {
   id: number;
@@ -14,6 +16,15 @@ export default function FirstStepForm() {
 
   const [options, setOptions] = useState<Shelter[]>();
   const [amount, setAmount] = useState<string>("");
+
+  const results = useQuery({
+    queryKey: ["shelters"],
+    queryFn: () => apiFetch(),
+  });
+
+  useEffect(() => {
+    setOptions(results.data?.shelters as Shelter[]);
+  }, [results.data]);
 
   return (
     <form className="flex w-full flex-col gap-10">
@@ -39,9 +50,11 @@ export default function FirstStepForm() {
               <option value="" disabled>
                 {t("selectPlaceholder")}
               </option>
-              <option value="a">a</option>
-              <option value="b">b</option>
-              <option value="c">c</option>
+              {options?.map((option) => (
+                <option key={option.id} value={option.id}>
+                  {option.name}
+                </option>
+              ))}
             </select>
 
             <ChevronIcon className="absolute top-1/2 right-5 -translate-y-1/2" />
