@@ -32,6 +32,14 @@
     "phoneDescription": "Mon-Fri from 8:00 AM to 5:00 PM."
   },
 
+  "AboutPage": {
+    "title": "About the project",
+    "fistParagraph": "The Good Boy Foundation is dedicated to improving the lives of dogs in Žilina, Slovakia. We rescue abandoned, abused, and homeless dogs, providing them with the medical care, shelter, and love they deserve. Our mission is to give these loyal companions a second chance at life by finding them loving homes. In addition to rescue and rehabilitation, we also focus on promoting responsible pet ownership and animal protection through educational and community programs.",
+    "secondParagraph": "Our work is made possible by the support of passionate volunteers, generous donors, and a community that cares deeply about animal welfare. We also organize spay and neuter initiatives to address the problem of stray dogs and ensure a long-term impact. At the Good Boy Foundation, we believe that every dog ​​deserves a safe, loving home and a happy life. Join us and help us make a difference – whether by volunteering, donating, or adopting a furry friend. Together, we can create a better future for dogs in Žilina.",
+    "totalValue": "Total Amount Raised",
+    "totalDonors": "Number of Donors"
+  },
+
   "Footer": {
     "contacts": "Contacts",
     "about": "About the project"

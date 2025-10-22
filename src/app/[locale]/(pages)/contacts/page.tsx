@@ -2,7 +2,6 @@ import MailIcon from "@/components/icons/MailIcon";
 import MapPinIcon from "@/components/icons/MapPinIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
 import Title from "@/components/Title";
-import { label } from "motion/react-client";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
