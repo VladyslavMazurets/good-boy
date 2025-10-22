@@ -22,6 +22,16 @@
     "submit": "Submit Form"
   },
 
+  "ContactsPage": {
+    "title": "Contacts",
+    "emailLabel": "Email",
+    "addressLabel": "Office",
+    "phoneLabel": "Phone",
+    "emailDescription": "Our friendly team is here to help you.",
+    "addressDescription": "Come say hello at our office.",
+    "phoneDescription": "Mon-Fri from 8:00 AM to 5:00 PM."
+  },
+
   "Footer": {
     "contacts": "Contacts",
     "about": "About the project"

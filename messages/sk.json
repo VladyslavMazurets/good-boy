@@ -22,6 +22,16 @@
     "submit": "Odoslať formulár "
   },
 
+  "ContactsPage": {
+    "title": "Kontakt",
+    "emailLabel": "Email",
+    "addressLabel": "Office",
+    "phoneLabel": "Phone",
+    "emailDescription": "Náš priateľský tím je tu, aby vám pomohol.",
+    "addressDescription": "Príďte nás pozdraviť v našej kancelárii.",
+    "phoneDescription": "Po-Pia od 8:00 do 17:00."
+  },
+
   "Footer": {
     "contacts": "Kontakty",
     "about": "O projekte"
