@@ -1,5 +1,6 @@
-import Footer from "@/components/Footer";
 import Image from "next/image";
+
+import Footer from "@/components/Footer";
 
 export default function HomeLayout({
   children,

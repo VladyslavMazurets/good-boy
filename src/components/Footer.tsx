@@ -1,8 +1,10 @@
+import { useTranslations } from "next-intl";
+
 import { Link } from "@/i18n/navigation";
+
 import FacebookIcon from "./icons/FacebookIcon";
 import InstagramIcon from "./icons/InstagramIcon";
 import LogoIcon from "./icons/LogoIcon";
-import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Footer() {

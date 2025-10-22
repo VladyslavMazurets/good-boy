@@ -1,9 +1,10 @@
+import Image from "next/image";
+import { useTranslations } from "next-intl";
+
 import MailIcon from "@/components/icons/MailIcon";
 import MapPinIcon from "@/components/icons/MapPinIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
 import Title from "@/components/Title";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
 
 export default function ContactsPage() {
   const t = useTranslations("ContactsPage");

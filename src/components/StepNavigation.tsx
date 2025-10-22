@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+
 import Button from "./Button";
 
 export default function StepNavigation() {

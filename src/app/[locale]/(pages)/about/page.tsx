@@ -1,10 +1,11 @@
 "use client";
 
-import Title from "@/components/Title";
-import apiFetch from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+
+import Title from "@/components/Title";
+import apiFetch from "@/lib/api";
 
 type Data = {
   contribution: number;
@@ -22,7 +23,7 @@ export default function About() {
   });
 
   useEffect(() => {
-    setData(results.data);
+    setData(results.data as Data);
   }, [results.data]);
 
   return (
@@ -34,14 +35,14 @@ export default function About() {
       <div className="border-gray flex w-full items-center gap-4 border-y py-16">
         <div className="flex w-1/2 flex-col items-center justify-center gap-3">
           <p className="text-primary text-6xl font-semibold -tracking-[0.3px]">
-            {data?.contribution} €
+            {data?.contribution ? data.contribution : 0} €
           </p>
           <p className="text-lg font-medium text-black">{t("totalValue")}</p>
         </div>
 
         <div className="flex w-1/2 flex-col items-center justify-center gap-3">
           <p className="text-primary text-6xl font-semibold -tracking-[0.3px]">
-            {data?.contributors}
+            {data?.contributors ? data.contributors : 0}
           </p>
           <p className="text-lg font-medium text-black">{t("totalDonors")}</p>
         </div>

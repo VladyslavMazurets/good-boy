@@ -1,9 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+
 import Footer from "@/components/Footer";
 import ArrowIcon from "@/components/icons/ArrowIcon";
-import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 
 export default function ContactsLayout({
   children,

@@ -4,10 +4,10 @@ import { useTranslations } from "next-intl";
 import React from "react";
 
 import ContributionTypeSelector from "@/components/ContributionTypeSelector";
-import FormSteps from "@/components/FormSteps";
-import Title from "@/components/Title";
 import FirstStepForm from "@/components/FirstStepForm";
+import FormSteps from "@/components/FormSteps";
 import StepNavigation from "@/components/StepNavigation";
+import Title from "@/components/Title";
 
 export default function Home() {
   const t = useTranslations();

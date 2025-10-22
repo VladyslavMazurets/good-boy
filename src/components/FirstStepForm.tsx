@@ -1,8 +1,10 @@
+import { useQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import ChevronIcon from "./icons/ChevronIcon";
-import { useQuery } from "@tanstack/react-query";
+
 import apiFetch from "@/lib/api";
+
+import ChevronIcon from "./icons/ChevronIcon";
 
 type Shelter = {
   id: number;
