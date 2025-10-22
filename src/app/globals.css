@@ -4,8 +4,20 @@
   --color-gray: #d1d5db;
   --color-gray-light: #f3f4f6;
   --color-primary: #4f46e5;
+  --color-secondary: #374151;
   --color-black: #111827;
 }
 
 body {
+}
+
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.no-spinner {
+  -moz-appearance: textfield;
 }

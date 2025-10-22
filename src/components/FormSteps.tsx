@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+
 import CheckIcon from "./icons/CheckIcon";
 
 type Props = {

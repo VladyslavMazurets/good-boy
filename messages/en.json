@@ -6,6 +6,13 @@
   },
 
   "FirstForm": {
-    "title": "Choose how you want to help "
+    "title": "Choose how you want to help ",
+    "contributionFirstType": "Contribute to a specific shelter",
+    "contributionSecondType": "Contribute to the entire foundation",
+    "aboutProject": "About the project",
+    "selectLabel": "Shelter",
+    "selectLabelPlaceholder": "(Optional)",
+    "selectPlaceholder": "Select a shelter from the list",
+    "sumLabel": " Amount I want to contribute"
   }
 }

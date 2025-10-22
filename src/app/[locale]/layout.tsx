@@ -1,7 +1,7 @@
+import { Inter } from "next/font/google";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import Image from "next/image";
-import { Inter } from "next/font/google";
 
 import { routing } from "@/i18n/routing";
 

@@ -6,6 +6,13 @@
   },
 
   "FirstForm": {
-    "title": "Vyberte si možnosť, ako chcete pomôcť "
+    "title": "Vyberte si možnosť, ako chcete pomôcť",
+    "contributionFirstType": "Prispieť konkrétnemu útulku",
+    "contributionSecondType": "Prispieť celej nadácii",
+    "aboutProject": "O projekte",
+    "selectLabel": "Útulok",
+    "selectLabelPlaceholder": "(Nepovinné)",
+    "selectPlaceholder": "Vyberte útulok zo zoznamu",
+    "sumLabel": " Suma, ktorou chcem prispieť"
   }
 }
