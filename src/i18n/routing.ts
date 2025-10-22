@@ -5,4 +5,14 @@ export const routing = defineRouting({
   defaultLocale: "sk",
   localeDetection: false,
   localePrefix: "as-needed",
+  pathnames: {
+    "/contacts": {
+      sk: "/kontakty",
+      en: "/contacts",
+    },
+    "/about": {
+      sk: "/o-nas",
+      en: "/about",
+    },
+  },
 });
