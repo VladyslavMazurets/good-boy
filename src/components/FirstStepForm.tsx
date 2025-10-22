@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import apiFetch from "@/lib/api";
 
 import ChevronIcon from "./icons/ChevronIcon";
+import SubTitle from "./SubTitle";
 
 type Shelter = {
   id: number;
@@ -31,9 +32,7 @@ export default function FirstStepForm() {
   return (
     <form className="flex w-full flex-col gap-10">
       <div className="flex flex-col gap-1">
-        <p className="text-base font-semibold text-black">
-          {t("aboutProject")}
-        </p>
+        <SubTitle>{t("aboutProject")}</SubTitle>
 
         <div className="flex w-full flex-col gap-1">
           <label

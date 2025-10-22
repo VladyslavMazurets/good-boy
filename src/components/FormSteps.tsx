@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import CheckIcon from "./icons/CheckIcon";
 
@@ -8,6 +8,8 @@ type Props = {
 
 export default function FormSteps({ currentStep }: Props) {
   const t = useTranslations("FormSteps");
+  const locale = useLocale();
+  console.log("🚀 ~ FormSteps ~ locale:", locale);
 
   const steps = [t("step1"), t("step2"), t("step3")];
 
@@ -38,7 +40,11 @@ export default function FormSteps({ currentStep }: Props) {
               {label}{" "}
             </span>
           </p>
-          {index !== 2 ? <div className="bg-gray h-px w-22" /> : null}
+          {index !== 2 ? (
+            <div
+              className={`bg-gray h-px ${locale === "en" ? "w-14" : "w-22"}`}
+            />
+          ) : null}
         </div>
       ))}
     </div>
