@@ -6,6 +6,7 @@ import apiFetch from "@/lib/api";
 
 import ChevronIcon from "./icons/ChevronIcon";
 import SubTitle from "./SubTitle";
+import { useFormContext } from "@/context/formContext";
 
 type Shelter = {
   id: number;
@@ -15,10 +16,11 @@ type Shelter = {
 export default function FirstStepForm() {
   const t = useTranslations("FirstForm");
 
+  const { state, dispatch } = useFormContext();
+
   const defaultSum = [5, 10, 20, 30, 50, 100];
 
   const [options, setOptions] = useState<Shelter[]>();
-  const [amount, setAmount] = useState<string>("");
 
   const results = useQuery({
     queryKey: ["shelters"],
@@ -46,9 +48,17 @@ export default function FirstStepForm() {
           <div className="relative w-full">
             <select
               id="shelterSelect"
-              className="border-gray-light bg-gray-light w-full appearance-none rounded-lg border p-4 pr-16"
+              value={state.shelterID || "0"}
+              onChange={(e) =>
+                dispatch({
+                  type: "SET_SHELTER",
+                  payload: Number(e.target.value),
+                })
+              }
+              disabled={state.type === "foundation"}
+              className="border-gray-light bg-gray-light w-full appearance-none rounded-lg border p-4 pr-16 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <option value="" disabled>
+              <option value="0" disabled>
                 {t("selectPlaceholder")}
               </option>
               {options?.map((option) => (
@@ -62,6 +72,7 @@ export default function FirstStepForm() {
           </div>
         </div>
       </div>
+
       <div className="flex w-full flex-col gap-4">
         <label
           htmlFor="sum"
@@ -74,11 +85,13 @@ export default function FirstStepForm() {
           <input
             id="sum"
             placeholder="0"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            value={state.value.toString()}
+            onChange={(e) =>
+              dispatch({ type: "SET_AMOUNT", payload: Number(e.target.value) })
+            }
             type="number"
-            className={`no-spinner text-6xl font-semibold -tracking-[0.3px] text-black focus:outline-none ${!amount ? "text-gray" : "text-black"}`}
-            style={{ width: `${amount?.toString().length || 1}ch` }}
+            className={`no-spinner text-6xl font-semibold -tracking-[0.3px] text-black focus:outline-none ${!state.value ? "text-gray" : "text-black"}`}
+            style={{ width: `${state.value?.toString().length || 1}ch` }}
           />
 
           <div className="h-[52px] w-px bg-black" />
@@ -90,9 +103,9 @@ export default function FirstStepForm() {
             <button
               key={sum}
               type="button"
-              onClick={() => setAmount(sum)}
+              onClick={() => dispatch({ type: "SET_AMOUNT", payload: sum })}
               className={`text-secondary bg-gray-light hover:bg-primary min-w-[96.33px] rounded-lg px-6.5 py-3 text-base/[150%] font-medium duration-200 ease-in-out hover:cursor-pointer hover:text-white ${
-                amount === sum ? "bg-primary text-white" : ""
+                state.value === sum ? "bg-primary text-white" : ""
               }`}
             >
               {sum} €

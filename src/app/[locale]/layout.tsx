@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import "../globals.css";
 
 import Providers from "@/providers";
+import FormContextProvider from "@/context/formContext";
 
 type Props = {
   children: React.ReactNode;
@@ -33,7 +34,9 @@ export default async function LocaleLayout({ children, params }: Props) {
       <html lang={locale}>
         <body className={inter.className}>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <Providers>{children}</Providers>
+            <Providers>
+              <FormContextProvider>{children}</FormContextProvider>
+            </Providers>
           </NextIntlClientProvider>
         </body>
       </html>
