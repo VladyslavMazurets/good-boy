@@ -1,4 +1,4 @@
-export default async function apiFetch<T = any>(endpoint?: string): Promise<T> {
+export default async function apiFetch<T>(endpoint?: string): Promise<T> {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}${endpoint || ""}`
   );

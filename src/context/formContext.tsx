@@ -18,7 +18,7 @@ interface Contributor {
 
 interface FormContextType {
   state: Body;
-  dispatch: React.Dispatch<any>;
+  dispatch: React.Dispatch<FormAction>;
 }
 
 type FormAction =

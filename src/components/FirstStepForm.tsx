@@ -1,15 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
+import { useFormContext } from "@/context/formContext";
 import apiFetch from "@/lib/api";
 
 import ChevronIcon from "./icons/ChevronIcon";
-import SubTitle from "./SubTitle";
-import { useFormContext } from "@/context/formContext";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import StepNavigation from "./StepNavigation";
+import SubTitle from "./SubTitle";
+
+type Shelters = {
+  shelters: Shelter[];
+};
 
 type Shelter = {
   id: number;
@@ -35,7 +39,6 @@ export default function FirstStepForm() {
   const {
     register,
     handleSubmit,
-    watch,
     setValue,
     getValues,
     formState: { errors },
@@ -57,13 +60,13 @@ export default function FirstStepForm() {
     router.push("/personal-info");
   };
 
-  const results = useQuery({
+  const results = useQuery<Shelters>({
     queryKey: ["shelters"],
     queryFn: () => apiFetch(),
   });
 
   useEffect(() => {
-    setOptions(results.data?.shelters as Shelter[]);
+    setOptions(results.data?.shelters);
   }, [results.data]);
 
   useEffect(() => {

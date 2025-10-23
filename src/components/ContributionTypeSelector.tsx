@@ -1,6 +1,7 @@
-import { useFormContext } from "@/context/formContext";
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
+
+import { useFormContext } from "@/context/formContext";
 
 export default function ContributionTypeSelector() {
   const t = useTranslations("FirstForm");

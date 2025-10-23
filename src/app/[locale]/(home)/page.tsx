@@ -5,9 +5,9 @@ import React from "react";
 
 import ContributionTypeSelector from "@/components/ContributionTypeSelector";
 import FirstStepForm from "@/components/FirstStepForm";
+import FormContainer from "@/components/FormContainer";
 import FormSteps from "@/components/FormSteps";
 import Title from "@/components/Title";
-import FormContainer from "@/components/FormContainer";
 
 export default function Home() {
   const t = useTranslations();

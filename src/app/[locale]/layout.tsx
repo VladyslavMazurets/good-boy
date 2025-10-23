@@ -3,12 +3,11 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
 
-import { routing } from "@/i18n/routing";
-
 import "../globals.css";
 
-import Providers from "@/providers";
 import FormContextProvider from "@/context/formContext";
+import { routing } from "@/i18n/routing";
+import Providers from "@/providers";
 
 type Props = {
   children: React.ReactNode;

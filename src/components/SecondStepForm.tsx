@@ -1,9 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import SubTitle from "./SubTitle";
 import { useState } from "react";
+
 import PhoneCountrySelect from "./PhoneCountrySelect";
+import SubTitle from "./SubTitle";
 
 export default function SecondStepForm() {
   const t = useTranslations("SecondForm");
