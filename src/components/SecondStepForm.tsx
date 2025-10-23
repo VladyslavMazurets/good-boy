@@ -5,14 +5,63 @@ import { useState } from "react";
 
 import PhoneCountrySelect from "./PhoneCountrySelect";
 import SubTitle from "./SubTitle";
+import { useFormContext } from "@/context/formContext";
+import { useForm } from "react-hook-form";
+import StepNavigation from "./StepNavigation";
+import { useRouter } from "next/navigation";
+
+interface SecondStepValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+}
 
 export default function SecondStepForm() {
   const t = useTranslations("SecondForm");
+  const router = useRouter();
+
+  const { state, dispatch } = useFormContext();
 
   const [country, setCountry] = useState<"sk" | "cz">("sk");
 
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SecondStepValues>({
+    defaultValues: {
+      firstName: state.contributors[0]?.firstName || "",
+      lastName: state.contributors[0]?.lastName || "",
+      email: state.contributors[0]?.email || "",
+      phone: state.contributors[0]?.phone.slice(4),
+    },
+  });
+
+  console.log(watch("lastName"));
+
+  const onValid = (data: SecondStepValues) => {
+    const contributor = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: country === "sk" ? "+421" + data.phone : "+420" + data.phone,
+    };
+
+    dispatch({
+      type: "SET_CONTRIBUTORS",
+      payload: [...state.contributors, contributor],
+    });
+
+    router.push("/confirmation");
+  };
+
   return (
-    <div className="mb-32 flex w-full flex-col gap-4">
+    <form
+      onSubmit={handleSubmit(onValid)}
+      className="flex w-full flex-col gap-4"
+    >
       <SubTitle>{t("aboutYou")}</SubTitle>
 
       <div className="grid-auto-rows grid grid-cols-2 gap-4">
@@ -21,7 +70,8 @@ export default function SecondStepForm() {
             {t("firstNameLabel")}
           </label>
           <input
-            type="name"
+            {...register("firstName", { required: false, min: 2, max: 20 })}
+            type="text"
             id="firstName"
             placeholder={t("firstNamePlaceholder")}
             className="border-gray-light bg-gray-light w-full rounded-lg border p-4 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50"
@@ -33,11 +83,26 @@ export default function SecondStepForm() {
             {t("lastNameLabel")}
           </label>
           <input
-            type="surname"
+            {...register("lastName", {
+              required: {
+                value: true,
+                message: "Last name is required",
+              },
+              min: {
+                value: 2,
+                message: "Last name is too short",
+              },
+              max: {
+                value: 30,
+                message: "Last name is too long",
+              },
+            })}
+            type="text"
             id="lastName"
             placeholder={t("lastNamePlaceholder")}
-            className="border-gray-light bg-gray-light w-full rounded-lg border p-4 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50"
+            className={`w-full rounded-lg border p-4 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 ${errors.lastName ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
           />
+          <span className="text-error text-sm">{errors.lastName?.message}</span>
         </div>
 
         <div className="col-start-1 col-end-3">
@@ -45,11 +110,22 @@ export default function SecondStepForm() {
             {t("emailLabel")}
           </label>
           <input
+            {...register("email", {
+              required: {
+                value: true,
+                message: "Email is required",
+              },
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "Invalid email address",
+              },
+            })}
             type="email"
             id="email"
             placeholder={t("emailPlaceholder")}
-            className="border-gray-light bg-gray-light w-full rounded-lg border p-4 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50"
+            className={`w-full rounded-lg border p-4 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 ${errors.email ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
           />
+          <span className="text-error text-sm">{errors.email?.message}</span>
         </div>
 
         <div className="col-start-1 col-end-3 flex flex-col">
@@ -57,22 +133,57 @@ export default function SecondStepForm() {
             {t("phoneLabel")}
           </label>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-start gap-4">
             <PhoneCountrySelect value={country} onChange={setCountry} />
-            <div className="relative w-full">
-              <span className="absolute top-1/2 left-3 -translate-y-1/2">
-                {country === "sk" ? "+ 421" : "+ 420"}
+            <div className="w-full">
+              <div className="relative">
+                <span className="absolute top-1/2 left-3 -translate-y-1/2">
+                  {country === "sk" ? "+ 421" : "+ 420"}
+                </span>
+                <input
+                  {...register("phone", {
+                    required: {
+                      value: true,
+                      message: "Phone number is required",
+                    },
+                    validate: (value) => {
+                      return value.length < 9
+                        ? "Phone number is too short"
+                        : true;
+                    },
+                    max: {
+                      value: 9,
+                      message: "Phone number is too long",
+                    },
+                    pattern: {
+                      value: /^[0-9\s+-]+$/,
+                      message: "Invalid phone number",
+                    },
+                  })}
+                  onInput={(e) => {
+                    e.currentTarget.value = e.currentTarget.value.replace(
+                      /[^0-9\s+-]/g,
+                      ""
+                    );
+                  }}
+                  type="tel"
+                  placeholder=" 123 321 123"
+                  className={`w-full rounded-lg border p-4 pl-15 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 ${errors.phone ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
+                />
+              </div>
+              <span className="text-error text-sm">
+                {errors.phone?.message}
               </span>
-              <input
-                type="tel"
-                name="phone"
-                placeholder=" 123 321 123"
-                className="border-gray-light bg-gray-light w-full rounded-lg border p-4 pl-15 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50"
-              />
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <StepNavigation
+        className="mt-50"
+        step={2}
+        onNextClick={handleSubmit(onValid)}
+      />
+    </form>
   );
 }

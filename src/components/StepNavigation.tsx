@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import Button from "./Button";
+import { useRouter } from "next/navigation";
 
 interface StepNavigationProps {
   className?: string;
@@ -14,13 +15,18 @@ export default function StepNavigation({
   onNextClick,
 }: StepNavigationProps) {
   const t = useTranslations("NavigationButtons");
+  const router = useRouter();
+
+  const handleBack = () => {
+    step === 2 ? router.push("/") : router.push("/personal-info");
+  };
 
   return (
     <div className={`flex w-full items-center justify-between ${className}`}>
       {step === 1 ? (
         <div />
       ) : (
-        <Button type="button" style="secondary">
+        <Button type="button" style="secondary" onClick={handleBack}>
           {t("back")}
         </Button>
       )}

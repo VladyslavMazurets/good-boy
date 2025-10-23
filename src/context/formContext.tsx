@@ -24,7 +24,8 @@ interface FormContextType {
 type FormAction =
   | { type: "SET_TYPE"; payload: "shelter" | "foundation" }
   | { type: "SET_AMOUNT"; payload: number }
-  | { type: "SET_SHELTER"; payload: number };
+  | { type: "SET_SHELTER"; payload: number }
+  | { type: "SET_CONTRIBUTORS"; payload: Contributor[] };
 
 const FormContext = createContext<FormContextType | null>(null);
 
@@ -43,6 +44,8 @@ function formReducer(state: Body, action: FormAction): Body {
       return { ...state, value: action.payload };
     case "SET_SHELTER":
       return { ...state, shelterID: action.payload };
+    case "SET_CONTRIBUTORS":
+      return { ...state, contributors: action.payload };
     default:
       return state;
   }

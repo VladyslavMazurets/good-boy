@@ -45,6 +45,7 @@ export default function FirstStepForm() {
   } = useForm<FirstStepValues>({
     defaultValues: {
       type: state.type,
+      shelterID: state.shelterID,
       amount: state.value,
     },
   });
@@ -53,7 +54,6 @@ export default function FirstStepForm() {
 
   const onValid = (data: FirstStepValues) => {
     console.log("data", data);
-    dispatch({ type: "SET_TYPE", payload: data.type });
     dispatch({ type: "SET_SHELTER", payload: data.shelterID || 0 });
     dispatch({ type: "SET_AMOUNT", payload: data.amount });
 
@@ -74,6 +74,11 @@ export default function FirstStepForm() {
       setValue("shelterID", 0);
     }
   }, [state.type]);
+  useEffect(() => {
+    if (options && state.shelterID) {
+      setValue("shelterID", state.shelterID);
+    }
+  }, [options, state.shelterID, setValue]);
 
   return (
     <form
@@ -102,14 +107,14 @@ export default function FirstStepForm() {
                   },
                   validate: (value) => {
                     if (state.type !== "shelter") return true;
-                    return Number(value) > 0 || "Shelter is required";
+                    return value ? true : "Shelter is required";
                   },
                 })}
                 id="shelterSelect"
                 disabled={state.type === "foundation"}
                 className={`border-gray-light w-full appearance-none rounded-lg border p-4 pr-16 disabled:cursor-not-allowed disabled:opacity-50 ${errors.shelterID ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
               >
-                <option value="0" disabled>
+                <option value="" disabled>
                   {t("selectPlaceholder")}
                 </option>
                 {options?.map((option) => (
