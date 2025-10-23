@@ -3,19 +3,12 @@
 import { useTranslations } from "next-intl";
 import SubTitle from "./SubTitle";
 import { useState } from "react";
-import ChevronIcon from "./icons/ChevronIcon";
-import Image from "next/image";
 import PhoneCountrySelect from "./PhoneCountrySelect";
 
 export default function SecondStepForm() {
   const t = useTranslations("SecondForm");
 
   const [country, setCountry] = useState<"sk" | "cz">("sk");
-
-  const countryCodes = {
-    cz: "+420",
-    sk: "+421",
-  };
 
   return (
     <div className="mb-32 flex w-full flex-col gap-4">
@@ -73,7 +66,7 @@ export default function SecondStepForm() {
                 type="tel"
                 name="phone"
                 placeholder=" 123 321 123"
-                className="border-gray-light bg-gray-light w-full rounded-lg border p-4 pl-14 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50"
+                className="border-gray-light bg-gray-light w-full rounded-lg border p-4 pl-15 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50"
               />
             </div>
           </div>
