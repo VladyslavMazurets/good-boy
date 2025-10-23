@@ -16,6 +16,18 @@
     "sumLabel": " Amount I want to contribute"
   },
 
+  "SecondForm": {
+    "title": "We need a few details from you",
+    "aboutYou": "About you",
+    "firstNameLabel": "First Name",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastNameLabel": "Last Name",
+    "lastNamePlaceholder": "Enter your last name",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email",
+    "phoneLabel": "Phone Number "
+  },
+
   "NavigationButtons": {
     "next": "Continue",
     "back": "Back",

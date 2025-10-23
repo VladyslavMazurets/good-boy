@@ -18,5 +18,13 @@ export const routing = defineRouting({
       sk: "/o-nas",
       en: "/about",
     },
+    "/personal-info": {
+      sk: "/osobne-udaje",
+      en: "/personal-info",
+    },
+    "/confirmation": {
+      sk: "/potvrdenie",
+      en: "/confirmation",
+    },
   },
 });

@@ -16,6 +16,18 @@
     "sumLabel": " Suma, ktorou chcem prispieť"
   },
 
+  "SecondForm": {
+    "title": "Potrebujeme od Vás zopár informácií",
+    "aboutYou": "O vás",
+    "firstNameLabel": "Meno",
+    "firstNamePlaceholder": "Zadajte Vaše meno",
+    "lastNameLabel": "Priezvisko",
+    "lastNamePlaceholder": "Zadajte Vaše priezvisko",
+    "emailLabel": "E-mailová adresa",
+    "emailPlaceholder": "Zadajte Váš e-mail",
+    "phoneLabel": "Telefónne číslo "
+  },
+
   "NavigationButtons": {
     "next": "Pokračovať",
     "back": "Späť",

@@ -8,17 +8,18 @@ import FirstStepForm from "@/components/FirstStepForm";
 import FormSteps from "@/components/FormSteps";
 import StepNavigation from "@/components/StepNavigation";
 import Title from "@/components/Title";
+import FormContainer from "@/components/FormContainer";
 
 export default function Home() {
   const t = useTranslations();
 
   return (
-    <div className="mt-10 flex h-full w-full flex-col gap-10">
+    <FormContainer>
       <FormSteps currentStep={1} />
       <Title title={t("FirstForm.title")} />
       <ContributionTypeSelector />
       <FirstStepForm />
       <StepNavigation />
-    </div>
+    </FormContainer>
   );
 }
