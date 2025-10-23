@@ -28,10 +28,24 @@
     "phoneLabel": "Telefónne číslo "
   },
 
+  "Confirmation": {
+    "title": "Skontrolujte si zadané údaje",
+    "summary": "Zhrnutie",
+    "donationType": "Forma pomoci",
+    "donationTypeShelter": "Finančný príspevok konkrétnemu útulku",
+    "donationTypeFoundation": "Finančný príspevok celej nadácii",
+    "shelter": "Útulok",
+    "contributionAmount": "Suma príspevku",
+    "fullName": "Meno a priezvisko",
+    "phone": "Telefónne číslo",
+    "agreeToPrivacy": "Súhlasím so spracovaním mojich osobných údajov"
+  },
+
   "NavigationButtons": {
     "next": "Pokračovať",
     "back": "Späť",
-    "submit": "Odoslať formulár "
+    "submit": "Odoslať formulár ",
+    "sendForm": "Odoslať formulár "
   },
 
   "ContactsPage": {

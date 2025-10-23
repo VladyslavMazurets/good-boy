@@ -39,8 +39,6 @@ export default function SecondStepForm() {
     },
   });
 
-  console.log(watch("lastName"));
-
   const onValid = (data: SecondStepValues) => {
     const contributor = {
       firstName: data.firstName,

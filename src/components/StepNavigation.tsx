@@ -6,12 +6,16 @@ import { useRouter } from "next/navigation";
 interface StepNavigationProps {
   className?: string;
   onNextClick: () => void;
+  showArrow?: boolean;
   step: number;
+  checked?: boolean;
 }
 
 export default function StepNavigation({
   className,
   step,
+  showArrow = true,
+  checked,
   onNextClick,
 }: StepNavigationProps) {
   const t = useTranslations("NavigationButtons");
@@ -30,8 +34,14 @@ export default function StepNavigation({
           {t("back")}
         </Button>
       )}
-      <Button type="submit" style="primary" onClick={onNextClick}>
-        {t("next")}
+      <Button
+        type="submit"
+        style="primary"
+        showArrow={showArrow}
+        disabled={checked === false}
+        onClick={onNextClick}
+      >
+        {step === 3 ? t("sendForm") : t("next")}
       </Button>
     </div>
   );

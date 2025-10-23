@@ -28,10 +28,24 @@
     "phoneLabel": "Phone Number "
   },
 
+  "Confirmation": {
+    "title": "Please review your information",
+    "summary": "Summary",
+    "donationType": "Type of Contribution",
+    "donationTypeShelter": "Financial contribution to a specific shelter",
+    "donationTypeFoundation": "Financial contribution to the entire foundation",
+    "shelter": "Shelter",
+    "contributionAmount": "Contribution Amount",
+    "fullName": "Full Name",
+    "phone": "Phone Number",
+    "agreeToPrivacy": "I agree to the processing of my personal data"
+  },
+
   "NavigationButtons": {
     "next": "Continue",
     "back": "Back",
-    "submit": "Submit Form"
+    "submit": "Submit Form",
+    "sendForm": "Submit Form "
   },
 
   "ContactsPage": {

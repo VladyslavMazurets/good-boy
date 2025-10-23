@@ -53,8 +53,15 @@ export default function FirstStepForm() {
   const currentAmount = getValues("amount");
 
   const onValid = (data: FirstStepValues) => {
-    console.log("data", data);
-    dispatch({ type: "SET_SHELTER", payload: data.shelterID || 0 });
+    const selectedShelter = options?.find(
+      (shelter) => shelter.id === Number(data.shelterID)
+    );
+
+    dispatch({ type: "SET_SHELTER_ID", payload: data.shelterID || 0 });
+    dispatch({
+      type: "SET_SHELTER_NAME",
+      payload: selectedShelter?.name || "",
+    });
     dispatch({ type: "SET_AMOUNT", payload: data.amount });
 
     router.push("/personal-info");
