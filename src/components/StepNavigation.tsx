@@ -8,7 +8,7 @@ interface StepNavigationProps {
   onNextClick: () => void;
   showArrow?: boolean;
   step: number;
-  checked?: boolean;
+  checked?: boolean | number;
 }
 
 export default function StepNavigation({

@@ -1,6 +1,6 @@
 export default async function apiFetch<T>(
   endpoint?: string,
-  options: {
+  options?: {
     method?: "GET" | "POST" | "PUT" | "DELETE";
     body?: any;
     headers?: Record<string, string>;

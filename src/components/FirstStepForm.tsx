@@ -23,7 +23,7 @@ type Shelter = {
 interface FirstStepValues {
   type: "shelter" | "foundation";
   shelterID?: number;
-  amount: number;
+  amount: string;
 }
 
 export default function FirstStepForm() {
@@ -39,6 +39,7 @@ export default function FirstStepForm() {
   const {
     register,
     handleSubmit,
+    watch,
     setValue,
     getValues,
     formState: { errors },
@@ -46,11 +47,11 @@ export default function FirstStepForm() {
     defaultValues: {
       type: state.type,
       shelterID: state.shelterID,
-      amount: state.value,
+      amount: state.value === 0 ? "" : state.value.toString(),
     },
   });
 
-  const currentAmount = getValues("amount");
+  const watchedAmount = watch("amount");
 
   const onValid = (data: FirstStepValues) => {
     const selectedShelter = options?.find(
@@ -62,7 +63,7 @@ export default function FirstStepForm() {
       type: "SET_SHELTER_NAME",
       payload: selectedShelter?.name || "",
     });
-    dispatch({ type: "SET_AMOUNT", payload: data.amount });
+    dispatch({ type: "SET_AMOUNT", payload: Number(data.amount) });
 
     router.push("/personal-info");
   };
@@ -162,9 +163,9 @@ export default function FirstStepForm() {
               id="sum"
               placeholder="0"
               type="number"
-              className={`no-spinner text-6xl font-semibold -tracking-[0.3px] text-black focus:outline-none ${!currentAmount ? "text-gray" : "text-black"} `}
+              className={`no-spinner text-6xl font-semibold -tracking-[0.3px] text-black focus:outline-none ${!watchedAmount ? "text-gray" : "text-black"} `}
               style={{
-                width: `${!isNaN(currentAmount) ? currentAmount?.toString().length : 1}ch`,
+                width: `${!isNaN(Number(watchedAmount)) ? watchedAmount?.toString().length : 1}ch`,
               }}
             />
 
@@ -179,9 +180,11 @@ export default function FirstStepForm() {
             <button
               key={sum}
               type="button"
-              onClick={() => setValue("amount", sum, { shouldValidate: true })}
+              onClick={() =>
+                setValue("amount", sum.toString(), { shouldValidate: true })
+              }
               className={`text-secondary bg-gray-light hover:bg-primary min-w-[96.33px] rounded-lg px-6.5 py-3 text-base/[150%] font-medium duration-200 ease-in-out hover:cursor-pointer hover:text-white ${
-                currentAmount === sum ? "bg-primary text-white" : ""
+                Number(watchedAmount) === sum ? "bg-primary text-white" : ""
               }`}
             >
               {sum} €

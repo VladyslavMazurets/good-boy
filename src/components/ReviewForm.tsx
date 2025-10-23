@@ -5,9 +5,11 @@ import SubTitle from "./SubTitle";
 import { useFormContext } from "@/context/formContext";
 import StepNavigation from "./StepNavigation";
 import CustomCheckbox from "./CustomCheckbox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import apiFetch from "@/lib/api";
+import Toast from "./Toast";
+import { useRouter } from "next/navigation";
 
 function InfoRow({ label, value }: { label: string; value?: string | number }) {
   return (
@@ -24,12 +26,22 @@ export default function ReviewForm() {
   const t = useTranslations("Confirmation");
 
   const { state, reset } = useFormContext();
+  const router = useRouter();
 
   const [checked, setChecked] = useState(false);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
 
+  const isFormValid =
+    state.contributors.length > 0 &&
+    state.value > 0 &&
+    state.type &&
+    state.shelterID;
   const mutation = useMutation({
     mutationFn: async () => {
-      apiFetch("/contribute", {
+      return await apiFetch("/contribute", {
         method: "POST",
         body: JSON.stringify(state),
         headers: {
@@ -38,11 +50,25 @@ export default function ReviewForm() {
       });
     },
     onSuccess: () => {
-      console.log("Contribution submitted successfully");
+      setToast({
+        message: t("submissionSuccess"),
+        type: "success",
+      });
       reset();
+
+      setTimeout(() => {
+        setToast(null);
+        router.push("/");
+      }, 3000);
     },
     onError: () => {
-      console.error("Error submitting contribution");
+      setToast({
+        message: t("submissionError"),
+        type: "error",
+      });
+      setTimeout(() => {
+        setToast(null);
+      }, 3000);
     },
   });
 
@@ -88,9 +114,13 @@ export default function ReviewForm() {
       <StepNavigation
         step={3}
         showArrow={false}
-        checked={checked}
+        checked={checked && isFormValid}
         onNextClick={mutation.mutate}
       />
+
+      {toast?.message ? (
+        <Toast message={toast?.message} type={toast?.type} />
+      ) : null}
     </div>
   );
 }

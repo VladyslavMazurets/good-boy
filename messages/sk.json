@@ -38,7 +38,9 @@
     "contributionAmount": "Suma príspevku",
     "fullName": "Meno a priezvisko",
     "phone": "Telefónne číslo",
-    "agreeToPrivacy": "Súhlasím so spracovaním mojich osobných údajov"
+    "agreeToPrivacy": "Súhlasím so spracovaním mojich osobných údajov",
+    "submissionSuccess": "Váš formulár bol úspešne odoslaný. Ďakujeme za vašu podporu!",
+    "submissionError": "Pri odosielaní formulára došlo k chybe. Skúste to prosím znova neskôr."
   },
 
   "NavigationButtons": {
