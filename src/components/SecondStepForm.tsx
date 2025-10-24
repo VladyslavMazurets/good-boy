@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -10,6 +9,8 @@ import { useFormContext } from "@/context/formContext";
 import PhoneCountrySelect from "./PhoneCountrySelect";
 import StepNavigation from "./StepNavigation";
 import SubTitle from "./SubTitle";
+import { createNavigation } from "next-intl/navigation";
+import { routing } from "@/i18n/routing";
 
 interface SecondStepValues {
   firstName: string;
@@ -20,9 +21,10 @@ interface SecondStepValues {
 
 export default function SecondStepForm() {
   const t = useTranslations("SecondForm");
-  const router = useRouter();
 
   const { state, dispatch } = useFormContext();
+  const { useRouter } = createNavigation(routing);
+  const router = useRouter();
 
   const [country, setCountry] = useState<"sk" | "cz">("sk");
 

@@ -6,7 +6,7 @@ interface Body {
   contributors: Contributor[];
   shelterID: number;
   shelterName?: string;
-  value: number;
+  value: number | undefined;
   type: "shelter" | "foundation";
 }
 
@@ -35,9 +35,9 @@ const FormContext = createContext<FormContextType | null>(null);
 
 const initialState: Body = {
   contributors: [],
-  type: "shelter",
+  type: "foundation",
   shelterID: 0,
-  value: 0,
+  value: undefined,
 };
 
 function formReducer(state: Body, action: FormAction): Body {

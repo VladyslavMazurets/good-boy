@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -10,6 +9,8 @@ import apiFetch from "@/lib/api";
 import ChevronIcon from "./icons/ChevronIcon";
 import StepNavigation from "./StepNavigation";
 import SubTitle from "./SubTitle";
+import { createNavigation } from "next-intl/navigation";
+import { routing } from "@/i18n/routing";
 
 type Shelters = {
   shelters: Shelter[];
@@ -23,14 +24,16 @@ type Shelter = {
 interface FirstStepValues {
   type: "shelter" | "foundation";
   shelterID?: number;
-  amount: string;
+  amount: number;
 }
 
 export default function FirstStepForm() {
   const t = useTranslations("FirstForm");
 
-  const router = useRouter();
   const { state, dispatch } = useFormContext();
+
+  const { useRouter } = createNavigation(routing);
+  const router = useRouter();
 
   const defaultSum = [5, 10, 20, 30, 50, 100];
 
@@ -46,7 +49,7 @@ export default function FirstStepForm() {
     defaultValues: {
       type: state.type,
       shelterID: state.shelterID,
-      amount: state.value === 0 ? "" : state.value.toString(),
+      amount: state.value,
     },
   });
 
@@ -121,7 +124,7 @@ export default function FirstStepForm() {
                 disabled={state.type === "foundation"}
                 className={`border-gray-light w-full appearance-none rounded-lg border p-4 pr-16 disabled:cursor-not-allowed disabled:opacity-50 ${errors.shelterID ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
               >
-                <option value="" disabled>
+                <option value="0" disabled>
                   {t("selectPlaceholder")}
                 </option>
                 {options?.map((option) => (
@@ -163,6 +166,12 @@ export default function FirstStepForm() {
                 },
                 valueAsNumber: true,
               })}
+              onInput={(e) => {
+                const val = e.currentTarget.value;
+                if (val.startsWith("0") && val.length > 1) {
+                  e.currentTarget.value = String(Number(val));
+                }
+              }}
               id="sum"
               placeholder="0"
               type="number"
@@ -183,9 +192,7 @@ export default function FirstStepForm() {
             <button
               key={sum}
               type="button"
-              onClick={() =>
-                setValue("amount", sum.toString(), { shouldValidate: true })
-              }
+              onClick={() => setValue("amount", sum, { shouldValidate: true })}
               className={`text-secondary bg-gray-light hover:bg-primary min-w-[96.33px] rounded-lg px-6.5 py-3 text-base/[150%] font-medium duration-200 ease-in-out hover:cursor-pointer hover:text-white ${
                 Number(watchedAmount) === sum ? "bg-primary text-white" : ""
               }`}

@@ -1,7 +1,6 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -12,6 +11,8 @@ import CustomCheckbox from "./CustomCheckbox";
 import StepNavigation from "./StepNavigation";
 import SubTitle from "./SubTitle";
 import Toast from "./Toast";
+import { createNavigation } from "next-intl/navigation";
+import { routing } from "@/i18n/routing";
 
 function InfoRow({ label, value }: { label: string; value?: string | number }) {
   return (
@@ -28,6 +29,8 @@ export default function ReviewForm() {
   const t = useTranslations("Confirmation");
 
   const { state, reset } = useFormContext();
+
+  const { useRouter } = createNavigation(routing);
   const router = useRouter();
 
   const [checked, setChecked] = useState(false);

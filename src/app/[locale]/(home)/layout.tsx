@@ -15,10 +15,11 @@ export default function HomeLayout({
       </div>
 
       <div className="hidden lg:flex lg:w-[50.89%]">
-        <div className="relative flex-1 xl:max-h-[984px] 2xl:max-h-[1025px]">
+        <div className="relative z-10 flex-1 xl:max-h-[984px] 2xl:max-h-[1025px]">
           <Image
             src="/images/puppy.webp"
             alt="Puppy Image"
+            sizes="( max-width: 700px ) 100vw, 50vw"
             fill
             className="rounded-[20px] object-cover"
             priority
