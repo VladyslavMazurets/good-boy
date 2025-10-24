@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useReducer, useContext } from "react";
+import { createContext, useReducer, useContext, useEffect } from "react";
 
 interface Body {
   contributors: Contributor[];
@@ -33,6 +33,8 @@ type FormAction =
 
 const FormContext = createContext<FormContextType | null>(null);
 
+const SESSION_KEY = "formState";
+
 const initialState: Body = {
   contributors: [],
   type: "foundation",
@@ -63,7 +65,21 @@ export default function FormContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [state, dispatch] = useReducer(formReducer, initialState);
+  const [state, dispatch] = useReducer(
+    formReducer,
+    initialState,
+    (initState) => {
+      if (typeof window !== "undefined") {
+        const stored = sessionStorage.getItem(SESSION_KEY);
+        return stored ? JSON.parse(stored) : initState;
+      }
+      return initState;
+    }
+  );
+
+  useEffect(() => {
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify(state));
+  }, [state]);
 
   const reset = () => dispatch({ type: "RESET" });
 

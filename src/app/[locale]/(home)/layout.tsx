@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import Footer from "@/components/Footer";
 
-export default function HomeLayout({
+export default async function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
