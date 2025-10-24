@@ -27,20 +27,20 @@ export default function About() {
   }, [results.data]);
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-5 md:gap-10">
       <Title title={t("title")} />
 
       <p>{t("fistParagraph")}</p>
 
-      <div className="border-gray flex w-full items-center gap-4 border-y py-16">
-        <div className="flex w-1/2 flex-col items-center justify-center gap-3">
+      <div className="border-gray flex w-full flex-col items-center gap-10 border-y py-16 md:flex-row md:gap-4">
+        <div className="flex w-full flex-col items-center justify-center gap-3 md:w-1/2">
           <p className="text-primary text-6xl font-semibold -tracking-[0.3px]">
             {data?.contribution ? data.contribution : 0} €
           </p>
           <p className="text-lg font-medium text-black">{t("totalValue")}</p>
         </div>
 
-        <div className="flex w-1/2 flex-col items-center justify-center gap-3">
+        <div className="flex w-full flex-col items-center justify-center gap-3 md:w-1/2">
           <p className="text-primary text-6xl font-semibold -tracking-[0.3px]">
             {data?.contributors ? data.contributors : 0}
           </p>
