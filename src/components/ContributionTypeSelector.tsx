@@ -9,14 +9,14 @@ export default function ContributionTypeSelector() {
   const { state, dispatch } = useFormContext();
 
   const buttonClasses =
-    "w-1/2 border relative z-10 border-transparent bg-transparent rounded-lg px-2 py-4 transition-colors text-sm/[100%] font-medium text-black hover:cursor-pointer";
+    "w-1/2 border relative z-10 border-transparent bg-transparent rounded-lg px-2 py-4 transition-colors text-xs/[100%] md:text-sm/[100%] font-medium text-black hover:cursor-pointer";
 
   return (
     <div className="border-gray relative flex h-full max-h-15 w-full items-center justify-between gap-2 rounded-xl border p-1">
       <motion.div
         layout
         transition={{ type: "spring", stiffness: 180, damping: 30 }}
-        className={`bg-primary absolute top-1 bottom-1 z-0 w-1/2 max-w-[321px] rounded-lg ${
+        className={`bg-primary absolute top-1 bottom-1 z-0 w-1/2 max-w-[321px] rounded-lg md:max-w-[477px] lg:max-w-[321px] ${
           state.type === "shelter" ? "left-1" : "left-1/2"
         }`}
       />

@@ -13,11 +13,11 @@ export default function FormSteps({ currentStep }: Props) {
   const steps = [t("step1"), t("step2"), t("step3")];
 
   return (
-    <div className="flex w-full items-center gap-4">
+    <div className="flex w-full items-center justify-between lg:justify-start lg:gap-4">
       {steps.map((label, index) => (
         <div
           key={index}
-          className={`step flex items-center gap-4 text-base/[100%] ${currentStep === index + 1 ? "active" : ""}`}
+          className={`step flex items-center gap-2 text-xs/[100%] md:gap-9 md:text-base/[100%] lg:gap-4 lg:text-sm/[100%] xl:text-base/[100%] ${currentStep === index + 1 ? "active" : ""}`}
         >
           <p className="flex items-center gap-2">
             <span
@@ -32,16 +32,16 @@ export default function FormSteps({ currentStep }: Props) {
               }`}
             >
               {index + 1 < currentStep ? <CheckIcon /> : index + 1}
-            </span>{" "}
+            </span>
             <span
               className={`${index + 1 <= currentStep ? "text-black" : "text-gray"}`}
             >
-              {label}{" "}
+              {label}
             </span>
           </p>
           {index !== 2 ? (
             <div
-              className={`bg-gray h-px ${locale === "en" ? "w-14" : "w-22"}`}
+              className={`bg-gray h-px ${locale === "en" ? "w-14" : "hidden md:block md:w-22 lg:w-4 xl:w-22"}`}
             />
           ) : null}
         </div>

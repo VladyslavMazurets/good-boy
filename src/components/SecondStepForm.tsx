@@ -28,7 +28,6 @@ export default function SecondStepForm() {
 
   const {
     register,
-    watch,
     handleSubmit,
     formState: { errors },
   } = useForm<SecondStepValues>({

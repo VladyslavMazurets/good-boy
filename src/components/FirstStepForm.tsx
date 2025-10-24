@@ -90,7 +90,7 @@ export default function FirstStepForm() {
   return (
     <form
       onSubmit={handleSubmit(onValid)}
-      className="flex w-full flex-col gap-10"
+      className="flex w-full flex-col gap-5 md:gap-10"
     >
       <div className="flex flex-col gap-1">
         <SubTitle>{t("aboutProject")}</SubTitle>
@@ -98,9 +98,9 @@ export default function FirstStepForm() {
         <div className="flex w-full flex-col gap-1">
           <label
             htmlFor="shelterSelect"
-            className="text-sm font-medium text-black"
+            className="text-xs font-medium text-black md:text-sm"
           >
-            {t("selectLabel")}{" "}
+            {t("selectLabel")}
             <span className="text-gray">{t("selectLabelPlaceholder")}</span>
           </label>
 
@@ -143,7 +143,7 @@ export default function FirstStepForm() {
       <div className="flex w-full flex-col gap-4">
         <label
           htmlFor="sum"
-          className="text-base/[150%] font-semibold text-black"
+          className="text-sm font-semibold text-black md:text-base/[150%]"
         >
           {t("sumLabel")}
         </label>
@@ -166,19 +166,19 @@ export default function FirstStepForm() {
               id="sum"
               placeholder="0"
               type="number"
-              className={`no-spinner text-6xl font-semibold -tracking-[0.3px] text-black focus:outline-none ${!watchedAmount ? "text-gray" : "text-black"} `}
+              className={`no-spinner text-4xl font-semibold -tracking-[0.3px] text-black focus:outline-none md:text-6xl ${!watchedAmount ? "text-gray" : "text-black"} `}
               style={{
                 width: `${!isNaN(Number(watchedAmount)) ? watchedAmount?.toString().length : 1}ch`,
               }}
             />
 
-            <div className="h-[52px] w-px bg-black" />
+            <div className="h-12 w-px bg-black md:h-[52px]" />
             <span className="mt-7 text-2xl/[100%] text-[#4B5563]">€</span>
           </div>
           <span className="text-error text-sm">{errors.amount?.message}</span>
         </div>
 
-        <div className="mt-6 flex items-center gap-4">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 xl:flex-nowrap">
           {defaultSum.map((sum) => (
             <button
               key={sum}

@@ -11,8 +11,8 @@ export default function Footer() {
   const t = useTranslations("Footer");
 
   return (
-    <footer className="border-gray mt-10 w-full border-t pt-6 pb-15">
-      <div className="flex items-center justify-between">
+    <footer className="border-gray mt-10 w-full border-t pt-6 pb-10 lg:pb-2 xl:pb-15">
+      <div className="flex flex-col items-center justify-between gap-10 md:flex-row md:gap-0">
         <Link href="/" className="hover:cursor-pointer">
           <LogoIcon className="h-8 w-31" />
         </Link>
