@@ -1,16 +1,16 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { createNavigation } from "next-intl/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { useFormContext } from "@/context/formContext";
+import { routing } from "@/i18n/routing";
 
 import PhoneCountrySelect from "./PhoneCountrySelect";
 import StepNavigation from "./StepNavigation";
 import SubTitle from "./SubTitle";
-import { createNavigation } from "next-intl/navigation";
-import { routing } from "@/i18n/routing";
 
 interface SecondStepValues {
   firstName: string;

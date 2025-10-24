@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
+import { createNavigation } from "next-intl/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { useFormContext } from "@/context/formContext";
+import { routing } from "@/i18n/routing";
 import apiFetch from "@/lib/api";
 
 import ChevronIcon from "./icons/ChevronIcon";
 import StepNavigation from "./StepNavigation";
 import SubTitle from "./SubTitle";
-import { createNavigation } from "next-intl/navigation";
-import { routing } from "@/i18n/routing";
 
 type Shelters = {
   shelters: Shelter[];

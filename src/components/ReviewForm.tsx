@@ -2,17 +2,21 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
+import { createNavigation } from "next-intl/navigation";
 import { useState } from "react";
 
 import { useFormContext } from "@/context/formContext";
+import { routing } from "@/i18n/routing";
 import apiFetch from "@/lib/api";
 
 import CustomCheckbox from "./CustomCheckbox";
 import StepNavigation from "./StepNavigation";
 import SubTitle from "./SubTitle";
 import Toast from "./Toast";
-import { createNavigation } from "next-intl/navigation";
-import { routing } from "@/i18n/routing";
+
+interface ApiError {
+  messages?: { path: string; message: string }[];
+}
 
 function InfoRow({ label, value }: { label: string; value?: string | number }) {
   return (
@@ -41,6 +45,7 @@ export default function ReviewForm() {
 
   const isFormValid =
     state.contributors.length > 0 &&
+    state.value !== undefined &&
     state.value > 0 &&
     state.type &&
     state.shelterID;
@@ -68,8 +73,10 @@ export default function ReviewForm() {
       }, 3000);
     },
     onError: (error) => {
-      if (error?.messages?.length) {
-        const firstError = error.messages[0];
+      const err = error as ApiError;
+
+      if (err?.messages?.length) {
+        const firstError = err.messages[0];
 
         if (firstError.path === "body.contributors.0.firstName") {
           setToast({

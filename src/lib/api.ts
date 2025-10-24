@@ -9,7 +9,22 @@ export default async function apiFetch<T>(
 ): Promise<T> {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}${endpoint || ""}`,
-    options
+    {
+      ...options,
+      body: options?.body
+        ? options.body instanceof FormData || typeof options.body === "string"
+          ? options.body
+          : JSON.stringify(options.body)
+        : undefined,
+      headers: {
+        ...(options?.body &&
+        !(options.body instanceof FormData) &&
+        typeof options.body === "object"
+          ? { "Content-Type": "application/json" }
+          : {}),
+        ...options?.headers,
+      },
+    } as RequestInit
   );
 
   const data = await res.json();
