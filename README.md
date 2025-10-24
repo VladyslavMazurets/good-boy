@@ -1,5 +1,7 @@
 # Frontend Assignment
 
+# Live: https://good-boy-ochre.vercel.app/
+
 ## 🧩 Overview
 This project is a multilingual frontend application built with **Next.js 15** and **TypeScript**.  
 It demonstrates locale-based routing, form handling, and API integration using TanStack Query and contextual state management.
