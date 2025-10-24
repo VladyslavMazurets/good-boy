@@ -2,7 +2,7 @@ export default async function apiFetch<T>(
   endpoint?: string,
   options?: {
     method?: "GET" | "POST" | "PUT" | "DELETE";
-    body?: any;
+    body?: Record<string, unknown> | FormData | string;
     headers?: Record<string, string>;
     cache?: RequestCache;
   }
@@ -12,9 +12,11 @@ export default async function apiFetch<T>(
     options
   );
 
+  const data = await res.json();
+
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    throw data;
   }
 
-  return res.json();
+  return data;
 }

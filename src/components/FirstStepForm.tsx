@@ -41,7 +41,6 @@ export default function FirstStepForm() {
     handleSubmit,
     watch,
     setValue,
-    getValues,
     formState: { errors },
   } = useForm<FirstStepValues>({
     defaultValues: {
@@ -81,7 +80,7 @@ export default function FirstStepForm() {
     if (state.type === "foundation") {
       setValue("shelterID", 0);
     }
-  }, [state.type]);
+  }, [state.type, setValue]);
   useEffect(() => {
     if (options && state.shelterID) {
       setValue("shelterID", state.shelterID);
@@ -157,6 +156,10 @@ export default function FirstStepForm() {
                 min: {
                   value: 1,
                   message: "Amount must be at least 1",
+                },
+                max: {
+                  value: 10000,
+                  message: "Amount must be less than 10,000",
                 },
                 valueAsNumber: true,
               })}

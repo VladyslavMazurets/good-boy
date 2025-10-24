@@ -1,14 +1,15 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+
+import { useFormContext } from "@/context/formContext";
 
 import PhoneCountrySelect from "./PhoneCountrySelect";
-import SubTitle from "./SubTitle";
-import { useFormContext } from "@/context/formContext";
-import { useForm } from "react-hook-form";
 import StepNavigation from "./StepNavigation";
-import { useRouter } from "next/navigation";
+import SubTitle from "./SubTitle";
 
 interface SecondStepValues {
   firstName: string;
@@ -49,7 +50,7 @@ export default function SecondStepForm() {
 
     dispatch({
       type: "SET_CONTRIBUTORS",
-      payload: [...state.contributors, contributor],
+      payload: [contributor],
     });
 
     router.push("/confirmation");
@@ -145,13 +146,12 @@ export default function SecondStepForm() {
                       message: "Phone number is required",
                     },
                     validate: (value) => {
-                      return value.length < 9
+                      const cleanValue = value.replace(/\s+/g, "");
+                      return cleanValue.length < 9
                         ? "Phone number is too short"
-                        : true;
-                    },
-                    max: {
-                      value: 9,
-                      message: "Phone number is too long",
+                        : cleanValue.length > 9
+                          ? "Phone number is too long"
+                          : true;
                     },
                     pattern: {
                       value: /^[0-9\s+-]+$/,

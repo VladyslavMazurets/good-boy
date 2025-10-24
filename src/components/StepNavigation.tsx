@@ -1,7 +1,7 @@
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 import Button from "./Button";
-import { useRouter } from "next/navigation";
 
 interface StepNavigationProps {
   className?: string;
@@ -22,7 +22,11 @@ export default function StepNavigation({
   const router = useRouter();
 
   const handleBack = () => {
-    step === 2 ? router.push("/") : router.push("/personal-info");
+    if (step === 2) {
+      router.push("/");
+    } else {
+      router.push("/personal-info");
+    }
   };
 
   return (

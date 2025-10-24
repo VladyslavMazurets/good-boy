@@ -22,8 +22,8 @@ export default function ContributionTypeSelector() {
       />
       <button
         onClick={() => {
-          (dispatch({ type: "SET_TYPE", payload: "shelter" }),
-            dispatch({ type: "SET_SHELTER", payload: 0 }));
+          dispatch({ type: "SET_TYPE", payload: "shelter" });
+          dispatch({ type: "SET_SHELTER_ID", payload: 0 });
         }}
         className={`${buttonClasses} ${
           state.type === "shelter" ? "text-white" : ""
@@ -34,8 +34,8 @@ export default function ContributionTypeSelector() {
 
       <button
         onClick={() => {
-          (dispatch({ type: "SET_TYPE", payload: "foundation" }),
-            dispatch({ type: "SET_SHELTER", payload: 0 }));
+          dispatch({ type: "SET_TYPE", payload: "foundation" });
+          dispatch({ type: "SET_SHELTER_ID", payload: 0 });
         }}
         className={`${buttonClasses} ${state.type === "foundation" ? "text-white" : ""}`}
       >

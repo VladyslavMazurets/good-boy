@@ -40,7 +40,8 @@
     "phone": "Phone Number",
     "agreeToPrivacy": "I agree to the processing of my personal data",
     "submissionSuccess": "Your form has been successfully submitted. Thank you for your support!",
-    "submissionError": "An error occurred while submitting the form. Please try again later."
+    "submissionError": "An error occurred while submitting the form. Please try again later.",
+    "firstNameRequired": "An error occurred while submitting the form. Please enter your first name."
   },
 
   "NavigationButtons": {

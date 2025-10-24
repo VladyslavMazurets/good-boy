@@ -1,15 +1,17 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import SubTitle from "./SubTitle";
-import { useFormContext } from "@/context/formContext";
-import StepNavigation from "./StepNavigation";
-import CustomCheckbox from "./CustomCheckbox";
-import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import apiFetch from "@/lib/api";
-import Toast from "./Toast";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+
+import { useFormContext } from "@/context/formContext";
+import apiFetch from "@/lib/api";
+
+import CustomCheckbox from "./CustomCheckbox";
+import StepNavigation from "./StepNavigation";
+import SubTitle from "./SubTitle";
+import Toast from "./Toast";
 
 function InfoRow({ label, value }: { label: string; value?: string | number }) {
   return (
@@ -39,9 +41,10 @@ export default function ReviewForm() {
     state.value > 0 &&
     state.type &&
     state.shelterID;
+
   const mutation = useMutation({
     mutationFn: async () => {
-      return await apiFetch("/contribute", {
+      return await apiFetch("contribute", {
         method: "POST",
         body: JSON.stringify(state),
         headers: {
@@ -61,11 +64,23 @@ export default function ReviewForm() {
         router.push("/");
       }, 3000);
     },
-    onError: () => {
-      setToast({
-        message: t("submissionError"),
-        type: "error",
-      });
+    onError: (error) => {
+      if (error?.messages?.length) {
+        const firstError = error.messages[0];
+
+        if (firstError.path === "body.contributors.0.firstName") {
+          setToast({
+            message: t("firstNameRequired"),
+            type: "error",
+          });
+        } else {
+          setToast({
+            message: t("submissionError"),
+            type: "error",
+          });
+        }
+      }
+
       setTimeout(() => {
         setToast(null);
       }, 3000);
