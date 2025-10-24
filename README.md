@@ -36,6 +36,3 @@ The app includes form validation, toast notifications, and localized content ren
 - pnpm install
 - pnpm dev
 
-**If you have any questions or get stuck:**
-
-- Feel free to ask questions or request help at [roman.haluska@goodrequest.com](mailto:roman.haluska@goodrequest.com) – we’ll be happy to help you. ;)
