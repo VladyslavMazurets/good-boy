@@ -16,8 +16,8 @@ import Toast from "./Toast";
 function InfoRow({ label, value }: { label: string; value?: string | number }) {
   return (
     <div className="flex w-full justify-between">
-      <span className="text-secondary">{label}</span>
-      <span className="font-semibold text-black">
+      <span className="text-secondary text-sm md:text-base">{label}</span>
+      <span className="text-sm font-semibold text-black md:text-base">
         {value !== undefined && value !== null && value !== "" ? value : "N/A"}
       </span>
     </div>
@@ -91,7 +91,7 @@ export default function ReviewForm() {
     <div className="flex flex-col gap-4">
       <SubTitle> {t("summary")} </SubTitle>
 
-      <div className="mb-47 flex w-full flex-col gap-8">
+      <div className="mb-20 flex w-full flex-col gap-8 md:mb-47">
         <div className="flex w-full flex-col gap-4">
           <InfoRow
             label={t("donationType")}

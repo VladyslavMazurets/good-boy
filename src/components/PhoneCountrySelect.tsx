@@ -36,7 +36,7 @@ export default function PhoneCountrySelect({ value, onChange }: Props) {
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="border-gray-light bg-gray-light flex w-20 items-center rounded-lg border px-4 py-4.5"
+        className="border-gray-light bg-gray-light flex w-20 items-center rounded-lg border px-4 py-3.5 md:py-4.5"
       >
         <Image src={current.flag} width={20} height={20} alt={current.code} />
         <ChevronIcon

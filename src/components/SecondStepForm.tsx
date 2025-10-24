@@ -64,7 +64,10 @@ export default function SecondStepForm() {
 
       <div className="grid-auto-rows grid grid-cols-2 gap-4">
         <div>
-          <label htmlFor="firstName" className="text-sm font-medium text-black">
+          <label
+            htmlFor="firstName"
+            className="text-xs font-medium text-black md:text-sm"
+          >
             {t("firstNameLabel")}
           </label>
           <input
@@ -72,12 +75,15 @@ export default function SecondStepForm() {
             type="text"
             id="firstName"
             placeholder={t("firstNamePlaceholder")}
-            className="border-gray-light bg-gray-light w-full rounded-lg border p-4 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50"
+            className="border-gray-light bg-gray-light w-full rounded-lg border p-4 text-xs placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 md:text-base"
           />
         </div>
 
         <div>
-          <label htmlFor="lastName" className="text-sm font-medium text-black">
+          <label
+            htmlFor="lastName"
+            className="text-xs font-medium text-black md:text-sm"
+          >
             {t("lastNameLabel")}
           </label>
           <input
@@ -98,13 +104,16 @@ export default function SecondStepForm() {
             type="text"
             id="lastName"
             placeholder={t("lastNamePlaceholder")}
-            className={`w-full rounded-lg border p-4 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 ${errors.lastName ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
+            className={`w-full rounded-lg border p-4 text-xs placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 md:text-base ${errors.lastName ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
           />
           <span className="text-error text-sm">{errors.lastName?.message}</span>
         </div>
 
         <div className="col-start-1 col-end-3">
-          <label htmlFor="email" className="text-sm font-medium text-black">
+          <label
+            htmlFor="email"
+            className="text-xs font-medium text-black md:text-sm"
+          >
             {t("emailLabel")}
           </label>
           <input
@@ -121,13 +130,16 @@ export default function SecondStepForm() {
             type="email"
             id="email"
             placeholder={t("emailPlaceholder")}
-            className={`w-full rounded-lg border p-4 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 ${errors.email ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
+            className={`w-full rounded-lg border p-4 text-xs placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 md:text-base ${errors.email ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
           />
           <span className="text-error text-sm">{errors.email?.message}</span>
         </div>
 
         <div className="col-start-1 col-end-3 flex flex-col">
-          <label htmlFor="phone" className="text-sm font-medium text-black">
+          <label
+            htmlFor="phone"
+            className="text-xs font-medium text-black md:text-sm"
+          >
             {t("phoneLabel")}
           </label>
 
@@ -165,7 +177,7 @@ export default function SecondStepForm() {
                   }}
                   type="tel"
                   placeholder=" 123 321 123"
-                  className={`w-full rounded-lg border p-4 pl-15 placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 ${errors.phone ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
+                  className={`w-full rounded-lg border p-4 pl-15 text-xs placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 md:text-base ${errors.phone ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
                 />
               </div>
               <span className="text-error text-sm">
