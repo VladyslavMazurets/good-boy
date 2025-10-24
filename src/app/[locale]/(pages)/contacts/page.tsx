@@ -34,24 +34,24 @@ export default function ContactsPage() {
     <div className="flex flex-col gap-10">
       <Title title={t("title")} />
 
-      <div className="mx-20 flex flex-col gap-10">
-        <div className="flex items-center justify-between pt-5 pb-6">
+      <div className="flex flex-col gap-10 xl:mx-20">
+        <div className="flex flex-col items-center gap-y-10 pt-5 pb-6 md:flex-row md:items-stretch md:gap-4">
           {contacts.map((contact, index) => {
             const Icon = contact.icon;
 
             return (
               <div
                 key={index}
-                className="flex w-1/3 max-w-[384px] flex-col items-center gap-5 text-center"
+                className="flex flex-1 flex-col items-center gap-5 text-center"
               >
                 <div className="bg-primary/10 flex h-12 w-12 items-center justify-center rounded-[10px]">
                   <Icon className="text-primary h-6 w-6" />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <span className="text-xl font-semibold text-black">
+                <div className="flex flex-1 flex-col gap-2">
+                  <span className="text-xl font-semibold text-black md:text-lg lg:text-xl">
                     {contact.label}
                   </span>
-                  <p className="text-base text-[#4B5563]">
+                  <p className="text-base text-[#4B5563] md:text-sm lg:text-base">
                     {contact.description}
                   </p>
                 </div>
@@ -63,7 +63,7 @@ export default function ContactsPage() {
                         ? `tel:${contact.cta}`
                         : undefined
                   }
-                  className="text-primary text-base font-medium"
+                  className="text-primary text-base font-medium md:text-sm lg:text-base"
                 >
                   {contact.cta}
                 </a>

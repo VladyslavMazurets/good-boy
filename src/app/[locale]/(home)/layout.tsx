@@ -8,7 +8,7 @@ export default function HomeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen w-full flex-col px-5 lg:flex-row lg:gap-10 lg:py-5 lg:pr-5 lg:pl-5 xl:gap-20 xl:pl-20 2xl:mx-auto 2xl:max-w-[1500px]">
+    <div className="flex min-h-screen w-full flex-col px-5 lg:flex-row lg:gap-10 lg:py-5 lg:pr-5 lg:pl-5 xl:gap-20 xl:pl-20">
       <div className="flex w-full flex-col lg:w-[49.11%]">
         {children}
         <Footer />

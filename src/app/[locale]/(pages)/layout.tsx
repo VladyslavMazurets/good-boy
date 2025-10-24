@@ -15,10 +15,10 @@ export default function ContactsLayout({
   const router = useRouter();
 
   return (
-    <section className="flex h-full w-full flex-col px-20 pt-16">
+    <section className="flex h-full w-full flex-col px-5 pt-10 lg:px-10 xl:px-20 xl:pt-16">
       <button
         onClick={() => router.back()}
-        className="text-primary mb-10 flex w-max items-center gap-1 font-medium hover:cursor-pointer"
+        className="text-primary mb-5 flex w-max items-center gap-1 font-medium hover:cursor-pointer md:mb-10"
       >
         <ArrowIcon className="h-3 w-3 rotate-180" />
         {t("back")}

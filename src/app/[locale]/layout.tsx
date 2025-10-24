@@ -34,7 +34,9 @@ export default async function LocaleLayout({ children, params }: Props) {
         <body className={inter.className}>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Providers>
-              <FormContextProvider>{children}</FormContextProvider>
+              <FormContextProvider>
+                <div className="2xl:mx-auto 2xl:max-w-[1500px]">{children}</div>
+              </FormContextProvider>
             </Providers>
           </NextIntlClientProvider>
         </body>
