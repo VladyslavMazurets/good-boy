@@ -22,14 +22,16 @@ export default function Button({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`flex w-max items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium hover:cursor-pointer hover:opacity-80 disabled:cursor-not-allowed md:px-8 md:py-4.5 md:text-base ${style === "primary" ? "bg-primary text-white" : "bg-gray-light text-secondary"}`}
+      className={`group flex w-max items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium hover:cursor-pointer hover:opacity-95 disabled:cursor-not-allowed md:px-8 md:py-4.5 md:text-base ${style === "primary" ? "bg-primary text-white" : "bg-gray-light text-secondary"}`}
     >
       {style == "secondary" ? (
-        <ArrowIcon className="text-secondary h-3 w-3 rotate-180" />
+        <ArrowIcon className="text-secondary h-3 w-3 rotate-180 duration-200 ease-in-out group-hover:-translate-x-1 group-hover:scale-110" />
       ) : null}
-      {children}
+      <span className="duration-200 ease-in-out group-hover:scale-105">
+        {children}
+      </span>
       {style == "primary" && showArrow ? (
-        <ArrowIcon className="h-3 w-3 text-white" />
+        <ArrowIcon className="h-3 w-3 text-white duration-200 ease-in-out group-hover:translate-x-2 group-hover:scale-110" />
       ) : null}
     </button>
   );

@@ -30,23 +30,30 @@ export default function SecondStepForm() {
 
   const {
     register,
+    watch,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<SecondStepValues>({
     defaultValues: {
       firstName: state.contributors[0]?.firstName || "",
       lastName: state.contributors[0]?.lastName || "",
       email: state.contributors[0]?.email || "",
-      phone: state.contributors[0]?.phone.slice(4),
+      phone: state.contributors[0]?.phone,
     },
   });
+
+  function normalizePhone(phone: string, country: "sk" | "cz") {
+    const cleaned = phone.replace(/^\+421|^\+420/, "");
+    return country === "sk" ? `+421${cleaned}` : `+420${cleaned}`;
+  }
 
   const onValid = (data: SecondStepValues) => {
     const contributor = {
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
-      phone: country === "sk" ? "+421" + data.phone : "+420" + data.phone,
+      phone: normalizePhone(data.phone, country),
     };
 
     dispatch({
@@ -146,42 +153,46 @@ export default function SecondStepForm() {
           </label>
 
           <div className="flex items-start gap-4">
-            <PhoneCountrySelect value={country} onChange={setCountry} />
+            <PhoneCountrySelect
+              value={country}
+              onChange={(newCountry) => {
+                setCountry(newCountry);
+                const currentPhone = watch("phone") || "";
+                const newPhone = normalizePhone(currentPhone, newCountry);
+                setValue("phone", newPhone);
+              }}
+            />
             <div className="w-full">
-              <div className="relative">
-                <span className="absolute top-1/2 left-3 -translate-y-1/2">
-                  {country === "sk" ? "+ 421" : "+ 420"}
-                </span>
-                <input
-                  {...register("phone", {
-                    required: {
-                      value: true,
-                      message: "Phone number is required",
-                    },
-                    validate: (value) => {
-                      const cleanValue = value.replace(/\s+/g, "");
-                      return cleanValue.length < 9
-                        ? "Phone number is too short"
-                        : cleanValue.length > 9
-                          ? "Phone number is too long"
-                          : true;
-                    },
-                    pattern: {
-                      value: /^[0-9\s+-]+$/,
-                      message: "Invalid phone number",
-                    },
-                  })}
-                  onInput={(e) => {
-                    e.currentTarget.value = e.currentTarget.value.replace(
-                      /[^0-9\s+-]/g,
-                      ""
-                    );
-                  }}
-                  type="tel"
-                  placeholder=" 123 321 123"
-                  className={`w-full rounded-lg border p-4 pl-15 text-xs placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 md:text-base ${errors.phone ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
-                />
-              </div>
+              <input
+                {...register("phone", {
+                  required: {
+                    value: true,
+                    message: "Phone number is required",
+                  },
+                  validate: (value) => {
+                    const cleanValue = value.replace(/\s+/g, "");
+                    return cleanValue.length < 13
+                      ? "Phone number is too short"
+                      : cleanValue.length > 13
+                        ? "Phone number is too long"
+                        : true;
+                  },
+                  pattern: {
+                    value:
+                      /^(?:\+421|\+420)(?!.*\+421)(?!.*\+420)[0-9\s]{6,12}$/,
+                    message: "Invalid phone number",
+                  },
+                })}
+                onInput={(e) => {
+                  e.currentTarget.value = e.currentTarget.value.replace(
+                    /[^0-9\s+-]/g,
+                    ""
+                  );
+                }}
+                type="tel"
+                placeholder=" 123 321 123"
+                className={`w-full rounded-lg border p-4 text-xs placeholder:text-[#9CA3AF] disabled:cursor-not-allowed disabled:opacity-50 md:text-base ${errors.phone ? "border-error bg-error/20 focus:outline-error" : "border-gray-light bg-gray-light"}`}
+              />
               <span className="text-error text-sm">
                 {errors.phone?.message}
               </span>

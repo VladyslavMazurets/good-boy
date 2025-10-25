@@ -36,7 +36,14 @@ const FormContext = createContext<FormContextType | null>(null);
 const SESSION_KEY = "formState";
 
 const initialState: Body = {
-  contributors: [],
+  contributors: [
+    {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "+421",
+    },
+  ],
   type: "foundation",
   shelterID: 0,
   value: undefined,
