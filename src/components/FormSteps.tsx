@@ -41,7 +41,7 @@ export default function FormSteps({ currentStep }: Props) {
           </p>
           {index !== 2 ? (
             <div
-              className={`bg-gray h-px ${locale === "en" ? "w-14" : "hidden md:block md:w-22 lg:w-4 xl:w-22"}`}
+              className={`bg-gray h-px ${locale === "en" ? "w-14" : "hidden md:block md:w-22 lg:w-4 xl:w-19"}`}
             />
           ) : null}
         </div>

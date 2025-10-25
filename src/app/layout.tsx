@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} 2xl:mx-auto 2xl:max-w-[1500px]`}>
         <Providers>
           <FormContextProvider>{children}</FormContextProvider>
         </Providers>
