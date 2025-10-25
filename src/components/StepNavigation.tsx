@@ -1,8 +1,9 @@
 import { useTranslations } from "next-intl";
+import { createNavigation } from "next-intl/navigation";
+
+import { routing } from "@/i18n/routing";
 
 import Button from "./Button";
-import { createNavigation } from "next-intl/navigation";
-import { routing } from "@/i18n/routing";
 
 interface StepNavigationProps {
   className?: string;

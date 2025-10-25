@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
 import { useFormContext } from "@/context/formContext";
-import { useEffect, useState } from "react";
 
 export default function ContributionTypeSelector() {
   const t = useTranslations("FirstForm");

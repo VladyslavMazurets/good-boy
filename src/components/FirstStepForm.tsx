@@ -9,9 +9,9 @@ import { routing } from "@/i18n/routing";
 import apiFetch from "@/lib/api";
 
 import ChevronIcon from "./icons/ChevronIcon";
+import Loader from "./Loader";
 import StepNavigation from "./StepNavigation";
 import SubTitle from "./SubTitle";
-import Loader from "./Loader";
 
 type Shelters = {
   shelters: Shelter[];
