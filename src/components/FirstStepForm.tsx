@@ -11,6 +11,7 @@ import apiFetch from "@/lib/api";
 import ChevronIcon from "./icons/ChevronIcon";
 import StepNavigation from "./StepNavigation";
 import SubTitle from "./SubTitle";
+import Loader from "./Loader";
 
 type Shelters = {
   shelters: Shelter[];
@@ -84,11 +85,20 @@ export default function FirstStepForm() {
       setValue("shelterID", 0);
     }
   }, [state.type, setValue]);
+
   useEffect(() => {
     if (options && state.shelterID) {
       setValue("shelterID", state.shelterID);
     }
   }, [options, state.shelterID, setValue]);
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, [state]);
+
+  if (!isLoaded) return <Loader />;
 
   return (
     <form

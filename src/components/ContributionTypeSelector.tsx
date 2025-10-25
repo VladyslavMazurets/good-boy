@@ -2,11 +2,20 @@ import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 
 import { useFormContext } from "@/context/formContext";
+import { useEffect, useState } from "react";
 
 export default function ContributionTypeSelector() {
   const t = useTranslations("FirstForm");
 
   const { state, dispatch } = useFormContext();
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, [state]);
+
+  if (!isLoaded) return null;
 
   const buttonClasses =
     "w-1/2 border relative z-10 border-transparent bg-transparent rounded-lg px-2 py-4 transition-colors text-xs/[100%] md:text-sm/[100%] font-medium text-black hover:cursor-pointer";
